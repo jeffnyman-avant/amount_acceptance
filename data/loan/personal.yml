@@ -1,0 +1,27 @@
+johnf9:
+  first_name: johnf9
+  last_name: doeum
+  address_1: 175 W. Jackson Blvd
+  address_2: Suite 1500
+  city: Chicago
+  state: IL
+  zip_code: 60606
+  own: true
+  monthly_payment: 800
+  address_start_month: Jan
+  address_start_year: 2015
+  birth_month: Jan
+  birth_day: 01
+  birth_year: 1979
+  phone: (738) 494-5977
+  email: guest_((random_large))@avant.test
+  #email: guest_1,568,027,030,019@avant.test
+  password: Automate1137*
+  confirm_password: Automate1137*
+  ssn: ((random_ssn))
+  income_type: Employed
+  monthly_net_income: 3000
+  loan_purpose: ((random_selection))
+  # loan_purpose: Emergency Expense
+  loan_amount: 3500
+  credit_quality: Excellent (720+)

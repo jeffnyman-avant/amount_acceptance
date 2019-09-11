@@ -1,0 +1,5 @@
+config:
+  current:
+    group: acceptance
+    server: local
+    user: admin

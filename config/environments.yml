@@ -1,0 +1,20 @@
+users: &users
+  admin:
+    - username: admin
+      password: admin
+      message: You are now logged in as admin.
+  tester:
+    - username: tester
+      password: testing
+      message: You are now logged in as tester.
+
+groups:
+  - group: acceptance
+    servers:
+      - server: local
+        <<: *users
+        url: http://localhost:5000
+
+      - server: staging
+        <<: *users
+        url: https://?????/
