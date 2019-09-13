@@ -1,11 +1,10 @@
 wisconsin with spouse:
-  first_name: Test
-  last_name: McTester
-  address_1: 123 South Test Lane
-  address_2: Suite 1500
-  city: Peytonmouth
+  first_name: Kaelyn
+  last_name: Wisoky
+  address_1: 832 Russel Wall
+  city: East Filomena
   state: WI
-  zip_code: 54794
+  zip_code: 54941
   own: true
   monthly_payment: 800
   address_start_month: Jan
@@ -13,9 +12,9 @@ wisconsin with spouse:
   birth_month: Jan
   birth_day: 01
   birth_year: 1979
-  phone: (738) 494-5977
+  phone: (326) 514-7527
   email: guest_((random_large))@avant.test
-  #email: guest_1,568,027,030,019@avant.test
+  #email: guest_1568027030019@avant.test
   password: Automate1137*
   confirm_password: Automate1137*
   ssn: ((random_ssn))
@@ -23,5 +22,5 @@ wisconsin with spouse:
   monthly_net_income: 3000
   loan_purpose: ((random_selection))
   # loan_purpose: Emergency Expense
-  loan_amount: 3500
+  loan_amount: 10000
   credit_quality: Excellent (720+)

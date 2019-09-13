@@ -7,4 +7,4 @@ Feature: Wisconsin Loan with Spouse
   business rule.
 
   Scenario: Apply for Personal Loan
-    Given a personal loan
+    Given a personal loan being applied for in Wisconsin

@@ -80,6 +80,6 @@ class ApplyForPersonalLoan
     end
 
     consent.click
-    agree.click
+    # agree.click
   end
 end

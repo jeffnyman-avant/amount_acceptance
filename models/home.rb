@@ -1,7 +1,6 @@
 class Home
   include Testable
 
-  # url_is "http://localhost:5000/"
   url_is Config.context["url"]
 
   link :check_loan_options, class: "outline", href: "/apply"
