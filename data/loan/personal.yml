@@ -13,14 +13,12 @@ wisconsin with spouse:
   birth_day: 01
   birth_year: 1979
   phone: (326) 514-7527
-  email: guest_((random_large))@avant.test
-  #email: guest_1568027030019@avant.test
+  email: avant-((random_large))@avant.test
   password: Automate1137*
   confirm_password: Automate1137*
   ssn: ((random_ssn))
   income_type: Employed
   monthly_net_income: 3000
   loan_purpose: ((random_selection))
-  # loan_purpose: Emergency Expense
   loan_amount: 10000
   credit_quality: Excellent (720+)

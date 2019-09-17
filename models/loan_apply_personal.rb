@@ -65,7 +65,7 @@ class ApplyForPersonalLoan
 
   checkbox    :consent,             id: "customer_electronic_communications_consent"
 
-  button      :agree,               qa_tag: "submit", class: ["app-form__submit", "button button--primary"]
+  button      :agree,               qa_tag: "submit", class: ["app-form__submit", "button", "button--primary"]
 
   def add_personal_data(person)
     # LoanData = DataAccessible.sources do |source|
@@ -80,6 +80,6 @@ class ApplyForPersonalLoan
     end
 
     consent.click
-    # agree.click
+    agree.click
   end
 end
