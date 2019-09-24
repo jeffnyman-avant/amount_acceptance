@@ -46,7 +46,7 @@ class ApplyForCreditCardPersonal
     continue.click
   end
 
-  def verify_error_messages
+  def verify_validation_messages
     continue.click
 
     when_ready do
