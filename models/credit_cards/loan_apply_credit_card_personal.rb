@@ -1,8 +1,13 @@
 class ApplyForCreditCardPersonal
   include Testable
   include DataBuilder
+  include DataAccessible
 
   DataBuilder.data_path = "#{File.dirname(__FILE__)}/../data/loan"
+
+  PersonalValidation = DataAccessible.sources do |source|
+    source.data_load "#{File.dirname(__FILE__)}/../../data/loan/credit_card_personal_validations.yml"
+  end
 
   page_ready { [first_name.wait_until(&:present?), "First name is not present"] }
   page_ready { [last_name.wait_until(&:present?), "Last name is not present"] }
@@ -13,6 +18,8 @@ class ApplyForCreditCardPersonal
   end
 
   div        :headline,          class:  "headline"
+  form       :apply_form,        name:   "form"
+  smalls     :errors,            class:  ["form__error", "!ng-hide"]
 
   text_field :first_name,        id:     "person_first_name"
   text_field :last_name,         id:     "person_last_name"
@@ -37,5 +44,25 @@ class ApplyForCreditCardPersonal
 
     consent.check
     continue.click
+  end
+
+  def verify_error_messages
+    continue.click
+
+    when_ready do
+      apply_form.wait_until(&:dom_updated?)
+
+      error_list = []
+
+      errors.each do |error|
+        error_list.push(error.text)
+      end
+
+      expect(error_list.size).to eq(9)
+
+      PersonalValidation.invalid.personal_data.each do |item|
+        expect(error_list).to include(item)
+      end
+    end
   end
 end

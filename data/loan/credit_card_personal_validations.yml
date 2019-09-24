@@ -1,0 +1,11 @@
+invalid:
+  personal_data:
+    - What is your first name?
+    - What is your last name?
+    - Please select a month
+    - Please select a day
+    - Please select a year
+    - What is your 9-digit social security number?
+    - Please fill in your phone number
+    - Please enter a valid email
+    - Password must be at least 8 characters
