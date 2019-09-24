@@ -1,4 +1,4 @@
-wisconsin with spouse:
+wisconsin_with_spouse:
   first_name: Kaelyn
   last_name: Wisoky
   address_1: 832 Russel Wall
@@ -22,3 +22,27 @@ wisconsin with spouse:
   loan_purpose: ((random_selection))
   loan_amount: 10000
   credit_quality: Excellent (720+)
+
+credit_card_personal:
+  first_name: John
+  last_name: Tester
+  birth_month: Jan
+  birth_day: 01
+  birth_year: 2000
+  ssn: 381047590
+  home_phone: 2345678901
+  email: avant@test.com
+  password: abcD@!234
+  confirm_password: abcD@!234
+
+credit_card_financial:
+  employment_status: Employed
+  monthly_income: 3000
+  credit_rating: Excellent (720+)
+  bank_balance: Greater than $1,000
+  address_1: 123 N Waterpark Dr.
+  city: Beverly Hills
+  state: CA
+  zipcode: 90210
+  rent: true
+  monthly_payment: 800
