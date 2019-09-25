@@ -1,0 +1,11 @@
+invalid:
+  financial_data:
+    - Please select your income type
+    - What is your net income per month?
+    - Select the purpose of this loan
+    - Please select an option.
+    - What is your address?
+    - What is your city?
+    - What is your state?
+    - What is your zip code?
+    - What is your monthly housing payment? (Please input numbers only)

@@ -47,9 +47,8 @@ class ApplyForCreditCardPersonal
   end
 
   def verify_validation_messages
-    continue.click
-
     when_ready do
+      continue.click
       apply_form.wait_until(&:dom_updated?)
 
       error_list = []

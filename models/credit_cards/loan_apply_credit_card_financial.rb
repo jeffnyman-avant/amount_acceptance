@@ -1,6 +1,7 @@
 class ApplyForCreditCardFinancial
   include Testable
   include DataBuilder
+  include DataAccessible
 
   DataBuilder.data_path = "#{File.dirname(__FILE__)}/../data/loan"
 
@@ -8,11 +9,17 @@ class ApplyForCreditCardFinancial
   page_ready { [state.wait_until(&:present?), "State is not present"] }
   page_ready { [complete.wait_until(&:present?), "Agree to Terms is not present"] }
 
+  FinancialValidation = DataAccessible.sources do |source|
+    source.data_load "#{File.dirname(__FILE__)}/../../data/loan/credit_card_financial_validations.yml"
+  end
+
   def begin_with
     data = DataBuilder.load("personal.yml")
   end
 
   div        :headline,          class:  "headline"
+  form       :apply_form,        name:   "form"
+  smalls     :errors,            class:  ["form__error", "!ng-hide"]
 
   select     :employment_status, id:     "income_income_type"
   text_field :monthly_income,    id:     "income_monthly_net_income"
@@ -38,5 +45,26 @@ class ApplyForCreditCardFinancial
 
     authorize.check
     complete.click
+  end
+
+  def verify_validation_messages
+    sleep 10
+
+    when_ready do
+      complete.click
+      apply_form.wait_until(&:dom_updated?)
+
+      error_list = []
+
+      errors.each do |error|
+        error_list.push(error.text)
+      end
+
+      expect(error_list.size).to eq(9)
+
+      FinancialValidation.invalid.financial_data.each do |item|
+        expect(error_list).to include(item)
+      end
+    end
   end
 end
