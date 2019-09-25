@@ -9,12 +9,12 @@ class ApplyForCreditCardFinancial
   page_ready { [state.wait_until(&:present?), "State is not present"] }
   page_ready { [complete.wait_until(&:present?), "Agree to Terms is not present"] }
 
-  FinancialValidation = DataAccessible.sources do |source|
-    source.data_load "#{File.dirname(__FILE__)}/../../data/loan/credit_card_financial_validations.yml"
-  end
-
   def begin_with
-    data = DataBuilder.load("personal.yml")
+    DataBuilder.load("personal.yml")
+
+    @financial = DataAccessible.sources do |source|
+      source.data_load "#{File.dirname(__FILE__)}/../../data/loan/credit_card_financial_validations.yml"
+    end
   end
 
   div        :headline,          class:  "headline"
@@ -62,9 +62,15 @@ class ApplyForCreditCardFinancial
 
       expect(error_list.size).to eq(9)
 
-      FinancialValidation.invalid.financial_data.each do |item|
+      @financial.invalid.financial_data.each do |item|
         expect(error_list).to include(item)
       end
+
+      @validations_list = error_list
     end
+  end
+
+  def display_validation_errors
+    @validations_list.join("\n")
   end
 end

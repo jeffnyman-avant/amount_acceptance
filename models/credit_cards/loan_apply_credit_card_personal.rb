@@ -5,21 +5,24 @@ class ApplyForCreditCardPersonal
 
   DataBuilder.data_path = "#{File.dirname(__FILE__)}/../data/loan"
 
-  PersonalValidation = DataAccessible.sources do |source|
-    source.data_load "#{File.dirname(__FILE__)}/../../data/loan/credit_card_personal_validations.yml"
-  end
-
   page_ready { [first_name.wait_until(&:present?), "First name is not present"] }
   page_ready { [last_name.wait_until(&:present?), "Last name is not present"] }
   page_ready { [continue.wait_until(&:present?), "Agree to Terms is not present"] }
 
   def begin_with
-    data = DataBuilder.load("personal.yml")
+    DataBuilder.load("personal.yml")
+
+    @personal = DataAccessible.sources do |source|
+      source.data_load "#{File.dirname(__FILE__)}/../../data/loan/credit_card_personal_validations.yml"
+    end
   end
 
   div        :headline,          class:  "headline"
   form       :apply_form,        name:   "form"
   smalls     :errors,            class:  ["form__error", "!ng-hide"]
+
+  form :validations, name: "form"
+  small :validation, -> { validations.small(class: ["form__error", "!ng-hide"])}
 
   text_field :first_name,        id:     "person_first_name"
   text_field :last_name,         id:     "person_last_name"
@@ -59,9 +62,15 @@ class ApplyForCreditCardPersonal
 
       expect(error_list.size).to eq(9)
 
-      PersonalValidation.invalid.personal_data.each do |item|
+      @personal.invalid.personal_data.each do |item|
         expect(error_list).to include(item)
       end
+
+      @validations_list = error_list
     end
+  end
+
+  def display_validation_errors
+    @validations_list.join("\n")
   end
 end

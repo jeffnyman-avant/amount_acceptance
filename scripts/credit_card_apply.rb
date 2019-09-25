@@ -14,6 +14,6 @@ on(ApplyForCreditCardPersonal).verify_validation_messages
 on(ApplyForCreditCardPersonal).add_personal_data("credit_card_personal")
 
 on(ApplyForCreditCardFinancial).verify_validation_messages
-on(ApplyForCreditCardFinancial).add_financial_data("credit_card_financial")
+#on(ApplyForCreditCardFinancial).add_financial_data("credit_card_financial")
 
 Testable.quit_browser
