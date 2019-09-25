@@ -21,9 +21,6 @@ class ApplyForCreditCardPersonal
   form       :apply_form,        name:   "form"
   smalls     :errors,            class:  ["form__error", "!ng-hide"]
 
-  form :validations, name: "form"
-  small :validation, -> { validations.small(class: ["form__error", "!ng-hide"])}
-
   text_field :first_name,        id:     "person_first_name"
   text_field :last_name,         id:     "person_last_name"
   select     :birth_month,       id:     "person_date_of_birth_month"
